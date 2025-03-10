@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="login form 1.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<script src="login form 1.js"></script>
+<style type="text/css">
+	body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		background: linear-gradient(90deg,#e2e2e2,#c9d6ff);
+	}
+	#container{
+		position: relative;
+		width: 850px;
+		height: 550px;
+		background: #fff;
+		border-radius: 30px;
+		box-shadow: 0 0 30px rgba(0,0,0,0.2);
+		overflow: hidden;
+		margin: 20px;
+	}
+	.login_form{
+		position: absolute;
+		display: flex;
+		align-items: center;
+		color: #333;
+		width: 50%;
+		height: 100%;
+		background: #fff;
+		right: 0;
+		text-align: center;
+		padding: 25px;
+		z-index: 1;
+		transition: 0.6s ease-in-out 1.2s,visibility 0s 1s;
+	}
+	#container.active .login_form{
+		right: 52%;
+	}
+	form{
+		width: 100%;
+	}
+	#container h1{
+		font-size: 36px;
+		margin: -10px 0;
+	}
+
+	.inputbox{
+		position: relative;
+		margin: 30px 0;
+	}
+
+	.inputbox input {
+		width: 80%;
+		padding: 13px 50px 13px 20px;
+		background: #eee;
+		border-radius: 8px;
+		border: none;
+		outline: none;
+		font-size: 16px;
+		color: #333;
+		font-weight:500 ;
+	}
+
+	.inputbox input::placeholder{
+		color: #888;
+		font-weight: 400;
+	}
+
+	.inputbox i {
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 20px;
+		color: #888;
+	}
+
+	.btn{
+		width: 100%;
+		height: 48px;
+		background: #7494ec;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		border: none;
+		cursor: pointer;
+		font-size: 16px;
+		color: #fff;
+		font-weight: 600;
+	}
+
+	#container p{
+		font-size: 14.5px;
+		margin: 15px 0px;
+	}
+
+	#links a{
+		display: inline-flex;
+		padding: 10px;
+		border: 2px solid #ccc;
+		border-radius: 8px;
+		font-size: 24px;
+		color: #333;
+		text-decoration: none;
+		margin: 0 8px;
+	}
+
+	#links{
+		display: flex;
+		justify-content: center;
+	}
+
+	.login_form .btn1{
+		width: 100%;
+		height: 48px;
+		background: #7494ec;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		border: none;
+		cursor: pointer;
+		font-size: 16px;
+		color: #fff;
+		font-weight: 600;
+	}
+
+	.login_form.register{
+		visibility: hidden;
+	}
+
+	#container.active .login_form.register{
+		visibility: visible;
+		right: 45%;
+	}
+
+	.toggle{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.toggle::before {
+		content: '';
+		position: absolute;
+		width: 300%;
+		height: 100%;
+		left: -255%;
+		background: #7494ec;
+		border-radius: 150px;
+		z-index: 2;
+		transition: 1.6s ease-in-out;
+	}
+
+	#container.active .toggle::before{
+		left: 55%;
+	}
+
+	.toggle_left{
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		color: #fff;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+		transition:0.6s ease-in-out ;
+	}
+
+	.toggle_left.toggle_register{
+		left: 0%;
+		transition-delay: 1.2s;
+	}
+
+	#container.active .toggle_left.toggle_register{
+		left: -50%;
+		transition-delay: 0.6s;
+	}
+
+	.toggle_left.toggle_login{
+		right: -50%;
+		transition-delay: 0.6s;
+	}
+
+	#container.active .toggle_left.toggle_login{
+		right: 0;
+		transition-delay: 1.2s;
+	}
+
+	.toggle_left p{
+		margin-bottom: 20px;
+	}
+
+	.toggle_left .btn{
+		width: 160px;
+		height: 46px;
+		background: transparent;
+		border: 2px solid #fff;
+		box-shadow: none;
+	}
+
+
+
+	@media screen and (max-width:655px){
+		.container{
+			height:calc(100vh - 40px) ;
+		}
+		.login_form{
+			width: 100%;
+			height: 60%;
+			bottom: 0;
+			padding: 20px;
+		}
+		#container.active .login_form{
+			right: 0;
+			bottom: 20%;
+			padding: 20px;
+		}
+		#container.active .login_form.register{
+			top: 10%;
+			right: 0%;
+		}
+		.toggle::before{
+			left: 0;
+			top: -270%;
+			width: 100%;
+			height: 300%;
+		}
+		#container.active .toggle::before{
+			left: 0;
+			top: 78%;
+		}
+		.toggle_left{
+			width: 100%;
+			height: 30%;
+		}
+		.toggle_left.toggle_register{
+			top:0%;
+		}
+		#container.active .toggle_left.toggle_register{
+			top: -50%;
+		}
+		.toggle_left.toggle_login{
+			right: 0;
+			bottom: -30%;
+		}
+		#container.active .toggle_left.toggle_login{
+			bottom: -4%;
+		}
+		form{
+			padding: 10%;
+		}
+		form h1{
+			font-size: 20px;
+		}
+		form a{
+			display: inline-flex;
+			padding: 5px;
+			font-size: 15px;
+			color: #333;
+			text-decoration: none;
+			margin-top: -10px;
+		}
+		input{
+			margin-top: -15px;
+		}
+		.btn,.btn1{
+			margin-top: -5px;
+		}
+	}
+
+
+	@media screen and (max-width:400px){
+		form{
+			padding: -10%;
+		}
+		#container.active .toggle::before{
+		top: 72%;
+	    }
+	    #container.active .login_form.register{
+			top: 5%;
+			right: 0%;
+			background-color: gold;
+		}
+		#container.active .login_form{
+			top: 5%;
+			right: 0%;
+		}
+
+	}
+
+</style>
+<body>
+<div id="container">
+			<div class="login_form login">
+				<form>	
+
+					<h1>login</h1>
+
+					<div class="inputbox"><input type="text" name="text" placeholder="user name">
+					<i class="fa-solid fa-user"></i></div>
+
+					<div class="inputbox"><input type="text" name="text" placeholder="password">
+					<i class="fa-solid fa-lock"></i></div>
+
+					<p href="www.google.com" style="font-size: 18px;">forget password ?</p>
+
+					<button class="btn">login</button>
+
+					<p>social platform links</p>
+
+					<div id="links">
+						<a href="www.google.com"><i class="fa-brands fa-google"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-facebook"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-linkedin"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-github"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+				</form>
+			</div>
+		     
+		    <div class="login_form register">
+				<form>	
+
+					<h1>register</h1>
+
+					<div class="inputbox"><input type="text" name="text" placeholder="user name">
+					<i class="fa-solid fa-user"></i></div>
+
+					<div class="inputbox"><input type="text" name="text" placeholder="email id">
+					<i class="fa-solid fa-envelope"></i></div>
+
+					<div class="inputbox"><input type="text" name="text" placeholder="confirm password">
+					<i class="fa-solid fa-lock"></i></div>
+
+					<button class="btn1">register</button>
+
+					<p>social platform links</p>
+
+					<div id="links">
+						<a href="www.google.com"><i class="fa-brands fa-google"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-facebook"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-linkedin"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-github"></i></a>
+			    	    <a href="www.google.com"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+				</form>
+			</div>
+
+			<div class="toggle">
+					<div class="toggle_register toggle_left">
+						<h1>hellow welcome!</h1>
+						<p>don't have an account</p>
+						<button class="btn register-btn">register</button>
+					</div>
+					<div class="toggle_login toggle_left">
+						<h1>welcome back!</h1>
+						<p>already have an account !</p>
+						<button class="btn login-btn">login</button>
+					</div>	
+			</div>
+</div>	
+
+
+</body>
+<script type="text/javascript">
+	const container = document.querySelector("#container")
+	const registerbtn = document.querySelector(".register-btn")
+	const loginbtn = document.querySelector(".login-btn")
+	registerbtn.addEventListener("click",() => {
+	    	container.classList.add("active");
+	    })
+	loginbtn.addEventListener("click",() => {
+	    	container.classList.remove("active");
+	    })
+</script>
+</html>
